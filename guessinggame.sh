@@ -1,8 +1,10 @@
 function guessfunction(){
-    files=$(pwd | ls | wc -l)
-    while true;
+    files=$(ls | wc -l)
+    correct=1
+
+    while [[ $correct -gt 0 ]];
     do
-        echo "Enter a number"
+        echo "Enter your guess as a number"
         read  guess
 
 	if [ $guess -lt $files ]
@@ -15,7 +17,7 @@ function guessfunction(){
 
 	 else
             echo "Nice! you entered the correct number"
-            break;
+            let correct=$correct-1
         fi
     done
 }
